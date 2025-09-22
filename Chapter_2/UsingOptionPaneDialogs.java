@@ -1,19 +1,23 @@
-import javax.swing.JOptionPane;
-
-public class UsingOptionPaneDialogs {
+import javax.swing.*;
+ 
+public class UsingJOptionPaneDialogs {
     public static void main(String[] args) {
-        String name = JOptionPane.showInputDialog(null, "What is your name?", "Input", JOptionPane.QUESTION_MESSAGE);
-        
-        if (name != null && !name.isEmpty()) {
-            int response = JOptionPane.showConfirmDialog(null, "Do you want to proceed?", "Confirmation", JOptionPane.YES_NO_OPTION);
-            
-            if (response == JOptionPane.YES_OPTION) {
-                JOptionPane.showMessageDialog(null, "Hello, " + name + "!");
-            } else {
-                JOptionPane.showMessageDialog(null, "Action canceled.");
+        while (true) {
+            String name = JOptionPane.showInputDialog(null, "Enter your name:");
+ 
+            if (name == null) {
+                System.exit(0);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "You must enter a name!", "Error", JOptionPane.ERROR_MESSAGE);
+ 
+            int confirm = JOptionPane.showConfirmDialog(null,
+                    "Do you want to display your name: " + name + "?",
+                    "Confirm Name",
+                    JOptionPane.YES_NO_OPTION);
+ 
+            if (confirm == JOptionPane.YES_OPTION) {
+                JOptionPane.showMessageDialog(null, "Hello, " + name);
+                break;  
+           }
         }
     }
 }
